@@ -7,149 +7,147 @@
   <style>
     :root {
       --primary: #1e3a8a;
-      --border: #cbd5e1;
+      --success: #16a34a;
       --text: #0f172a;
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       background-color: #f8fafc;
       margin: 0;
-      padding: 20px;
+      padding: 16px;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 90vh;
+      min-height: 95vh;
     }
-    .payment-container {
+    .pay-box {
       background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       border: 1px solid #e2e8f0;
       padding: 24px;
       width: 100%;
-      max-width: 400px;
+      max-width: 390px;
       box-sizing: border-box;
-      text-align: center;
     }
     h2 {
-      font-size: 18px;
+      font-size: 20px;
       color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin: 0 0 20px 0;
+      margin: 0 0 15px 0;
+      font-weight: 800;
+      text-align: center;
     }
-    .app-btn {
+    .price-tag {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .app-launcher-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
+      background: #2563eb;
+      color: white;
       text-decoration: none;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-      transition: transform 0.1s;
-      border: 1px solid var(--border);
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      text-align: center;
     }
-    .app-btn:active {
-      transform: scale(0.98);
+    .app-launcher-btn:active {
+      background: #1d4ed8;
     }
-    .gpay { color: #3c4043; background: #ffffff; }
-    .phonepe { color: #5f259f; background: #ffffff; }
-    .paytm { color: #00baf2; background: #ffffff; }
-    
-    .divider {
-      margin: 24px 0;
-      border: 0;
-      border-top: 1px dashed #cbd5e1;
+    .custom-instructions {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 15px;
     }
-    
-    .upi-card {
+    .copy-card {
       background: #f1f5f9;
-      border: 1px dashed #94a3b8;
+      border: 2px dashed #cbd5e1;
       padding: 16px;
       border-radius: 12px;
       cursor: pointer;
+      text-align: center;
+      margin-bottom: 10px;
+      transition: all 0.2s ease;
     }
-    .upi-card p {
-      margin: 0 0 6px 0;
-      font-size: 12px;
-      font-weight: bold;
-      color: #64748b;
-      text-transform: uppercase;
-    }
-    .upi-id-text {
-      font-size: 18px;
+    .badge {
+      font-size: 11px;
       font-weight: 700;
-      color: var(--text);
-      letter-spacing: 0.5px;
-    }
-    .status {
-      display: block;
-      margin-top: 6px;
-      font-size: 12px;
       color: #0284c7;
-      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .id-display {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
     }
   </style>
 </head>
 <body>
 
-<div class="payment-container">
+<div class="pay-box">
+  <h2>Grammar Guru Peedom</h2>
   
-  <h2>🚀 Mobile Users:<br>Pay Directly via App</h2>
-  
-  <a class="app-btn gpay" href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end" target="_top">
-    🔵 Open Google Pay (GPay)
-  </a>
-  
-  <a class="app-btn phonepe" href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=com.phonepe.app;end" target="_top">
-    🟣 Open PhonePe
-  </a>
+  <div class="price-tag">
+    💰 Amount Payable (1 Month): Rs. 699
+  </div>
 
-  <a class="app-btn paytm" href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=net.one97.paytm;end" target="_top">
-    🟢 Open Paytm
+  <a class="app-launcher-btn" href="upi://pay" target="_top">
+    🚀 Pay via UPI App
   </a>
 
-  <hr class="divider">
+  <div class="custom-instructions">
+    You can either scan the QR Code to make the payment or can Copy the UPI ID into your UPI Payment App (details are given below). 
+    <br><br>
+    <strong>Tap anywhere on the UPI ID box below</strong> and copy it. Then tap on the <strong>Pay via UPI App</strong> button above. You can paste the UPI ID in the search box and it will show my banking name and type the amount.
+  </div>
 
-  <div id="upiCard" class="upi-card" onclick="copyUpiId()">
-    <p>Alternative: Tap to Copy UPI ID</p>
-    <div id="idText" class="upi-id-text">divyakrishnan2080@oksbi</div>
-    <span id="copyStatus" class="status">Tap anywhere inside to copy ID</span>
+  <div id="copyWrapper" class="copy-card" onclick="copyId()">
+    <span id="badgeText" class="badge">👇 Tap to Copy UPI ID</span>
+    <div class="id-display">divyakrishnan2080@oksbi</div>
   </div>
 
 </div>
 
 <script>
-function copyUpiId() {
-  var idStr = "divyakrishnan2080@oksbi";
-  var textArea = document.createElement("textarea");
-  textArea.value = idStr;
-  textArea.style.position = "fixed"; 
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
+function copyId() {
+  var id = "divyakrishnan2080@oksbi";
+  var el = document.createElement('textarea');
+  el.value = id;
+  el.style.position = 'fixed';
+  document.body.appendChild(el);
+  el.select();
   
   try {
     document.execCommand('copy');
-    var status = document.getElementById('copyStatus');
-    var card = document.getElementById('upiCard');
-    status.innerText = "✓ ID Copied! Paste in your App";
-    status.style.color = "#16a34a";
-    card.style.borderColor = "#16a34a";
-    card.style.background = "#f0fdf4";
+    document.getElementById('badgeText').innerText = "✓ COPIED TO CLIPBOARD!";
+    document.getElementById('badgeText').style.color = "var(--success)";
+    document.getElementById('copyWrapper').style.borderColor = "var(--success)";
+    document.getElementById('copyWrapper').style.background = "#f0fdf4";
     setTimeout(function() {
-      status.innerText = "Tap anywhere inside to copy ID";
-      status.style.color = "#0284c7";
-      card.style.borderColor = "#94a3b8";
-      card.style.background = "#f1f5f9";
-    }, 3000);
+      document.getElementById('badgeText').innerText = "👇 Tap to Copy UPI ID";
+      document.getElementById('badgeText').style.color = "#0284c7";
+      document.getElementById('copyWrapper').style.borderColor = "#cbd5e1";
+      document.getElementById('copyWrapper').style.background = "#f1f5f9";
+    }, 2500);
   } catch (err) {
-    alert("Copy manually: " + idStr);
+    alert("Please manually select and copy the ID.");
   }
-  document.body.removeChild(textArea);
+  document.body.removeChild(el);
 }
 </script>
 
