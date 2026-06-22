@@ -1,29 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opening UPI App...</title>
-    <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; text-align: center; padding: 50px 20px; color: #334155; }
-        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #28a745; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
-</head>
-<body>
+<div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 400px; margin: auto; padding: 10px;">
+  
+  <!-- ROW 1: QUICK PAYMENT BUTTONS FOR MOBILE -->
+  <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: bold; color: #1e3a8a; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">🚀 Mobile Users: Pay Directly via App</p>
+  
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+    <!-- GPAY -->
+    <a href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end" target="_top" style="display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-weight: 600; color: #3c4043; text-decoration: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      🔵 Open in Google Pay (GPay)
+    </a>
+    
+    <!-- PHONEPE -->
+    <a href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=com.phonepe.app;end" target="_top" style="display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-weight: 600; color: #5f259f; text-decoration: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      🟣 Open in PhonePe
+    </a>
 
-    <div class="loader"></div>
-    <h2>Connecting to your Payment Apps...</h2>
-    <p>If your app doesn't open automatically, <a id="fallbackLink" href="#" style="color: #28a745; font-weight: bold; text-decoration: none;">click here</a>.</p>
+    <!-- PAYTM -->
+    <a href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=net.one97.paytm;end" target="_top" style="display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-weight: 600; color: #00baf2; text-decoration: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      🟢 Open in Paytm
+    </a>
+  </div>
 
-    <script>
-        // The secure deep link address
-        var upiUrl = "upi://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR";
-        
-        // Set up the fallback link just in case
-        document.getElementById("fallbackLink").href = upiUrl;
+  <!-- ROW 2: FALLBACK COPY CARD -->
+  <div id="upiCard" onclick="copyUpiId()" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 1px solid #e2e8f0; padding: 14px; border-radius: 10px; cursor: pointer; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+    <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: bold; color: #64748b; text-transform: uppercase;">Alternative: Tap to Copy UPI ID</p>
+    <div id="idText" style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 20px;">divyakrishnan2080@oksbi</div>
+    <span id="copyStatus" style="font-size: 11px; color: #0284c7; font-weight: 600;">Click to copy if buttons don't open</span>
+  </div>
 
-        // Automatically trigger the phone's app selector tray immediately on load
-        window.location.href = upiUrl;
-    </script>
-</body>
-</html>
+</div>
+
+<script>
+function copyUpiId() {
+  var idStr = "divyakrishnan2080@oksbi";
+  var textArea = document.createElement("textarea");
+  textArea.value = idStr;
+  textArea.style.position = "fixed"; 
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  
+  try {
+    document.execCommand('copy');
+    var status = document.getElementById('copyStatus');
+    var card = document.getElementById('upiCard');
+    status.innerText = "✓ ID Copied! Paste in your App";
+    status.style.color = "#16a34a";
+    card.style.borderColor = "#16a34a";
+    setTimeout(function() {
+      status.innerText = "Click to copy if buttons don't open";
+      status.style.color = "#0284c7";
+      card.style.borderColor = "#e2e8f0";
+    }, 3000);
+  } catch (err) {
+    alert("Copy manually: " + idStr);
+  }
+  document.body.removeChild(textArea);
+}
+</script>
