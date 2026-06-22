@@ -27,7 +27,7 @@
       border: 1px solid #e2e8f0;
       padding: 24px;
       width: 100%;
-      max-width: 390px;
+      max-width: 410px;
       box-sizing: border-box;
     }
     h2 {
@@ -66,12 +66,6 @@
     .app-launcher-btn:active {
       background: #1d4ed8;
     }
-    .custom-instructions {
-      font-size: 14px;
-      color: #475569;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
     .copy-card {
       background: #f1f5f9;
       border: 2px dashed #cbd5e1;
@@ -79,7 +73,7 @@
       border-radius: 12px;
       cursor: pointer;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       transition: all 0.2s ease;
     }
     .badge {
@@ -95,6 +89,43 @@
       font-weight: 800;
       color: var(--text);
     }
+    .custom-instructions {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    /* APP GUIDES */
+    .app-guide-box {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+      background: #fafafa;
+    }
+    .app-guide-box.gpay { border-left: 4px solid #3c4043; }
+    .app-guide-box.phonepe { border-left: 4px solid #5f259f; }
+    .app-guide-box.paytm { border-left: 4px solid #00baf2; }
+    
+    .guide-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    ol {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: #334155;
+    }
+    li {
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    li:last-child { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -102,33 +133,57 @@
 <div class="pay-box">
   <h2>Grammar Guru Peedom</h2>
   
-  <!-- AMOUNT DUE (UPDATES AUTOMATICALLY) -->
   <div class="price-tag" id="priceDisplay">
     💰 Amount Payable: Rs. --
   </div>
 
-  <!-- STEP 1: LAUNCH THE APP -->
-  <a class="app-launcher-btn" href="upi://pay" target="_top">
-    🚀 Pay via UPI App
-  </a>
-
-  <!-- CLEANED INSTRUCTIONS -->
-  <div class="custom-instructions">
-    You can copy the UPI ID into your UPI Payment App (details are given below). 
-    <br><br>
-    <strong>Tap anywhere on the UPI ID box below</strong> and copy it. Then tap on the <strong>Pay via UPI App</strong> button above. You can paste the UPI ID in the search box and it will show my banking name and type the amount.
+  <div id="copyWrapper" class="copy-card" onclick="copyId()">
+    <span id="badgeText" class="badge">👇 Step 1: Tap to Copy UPI ID</span>
+    <div class="id-display">divyakrishnan2080@oksbi</div>
   </div>
 
-  <!-- CLICK TO COPY FIELD -->
-  <div id="copyWrapper" class="copy-card" onclick="copyId()">
-    <span id="badgeText" class="badge">👇 Tap to Copy UPI ID</span>
-    <div class="id-display">divyakrishnan2080@oksbi</div>
+  <a class="app-launcher-btn" href="upi://pay" target="_top">
+    🚀 Step 2: Pay via UPI App
+  </a>
+
+  <div class="custom-instructions">
+    You can copy the UPI ID into your UPI Payment App. Tap anywhere on the UPI ID box above and copy it. Then tap on the <strong>Pay via UPI App</strong> button. You can paste the UPI ID in the search box as shown below, verify the banking name, and type the amount.
+  </div>
+
+  <div class="app-guide-box gpay">
+    <div class="guide-title" style="color: #3c4043;">🔵 In Google Pay (GPay)</div>
+    <ol>
+      <li>Open Google Pay.</li>
+      <li>On the home screen, tap <strong>Pay UPI ID or number</strong>.</li>
+      <li>Long-press inside the search bar, tap <strong>Paste</strong>, and click <strong>Continue</strong>.</li>
+      <li>Enter the package amount and pay!</li>
+    </ol>
+  </div>
+
+  <div class="app-guide-box phonepe">
+    <div class="guide-title" style="color: #5f259f;">举 In PhonePe</div>
+    <ol>
+      <li>Open PhonePe.</li>
+      <li>In the "Transfer Money" section, tap <strong>To Bank/UPI ID</strong>.</li>
+      <li>Tap the <strong>UPI ID</strong> tab at the top of the screen.</li>
+      <li>Tap the search bar (or the <strong>+</strong> plus icon at bottom right).</li>
+      <li>Long-press, tap <strong>Paste</strong>, click <strong>Verify</strong>, and save to pay!</li>
+    </ol>
+  </div>
+
+  <div class="app-guide-box paytm">
+    <div class="guide-title" style="color: #00baf2;">🟢 In Paytm</div>
+    <ol>
+      <li>Open Paytm.</li>
+      <li>On the home screen, tap <strong>To Bank A/c or UPI ID</strong>.</li>
+      <li>Tap <strong>Enter UPI ID of any app</strong>.</li>
+      <li>Long-press inside the input box, tap <strong>Paste</strong>, and hit <strong>Proceed to pay!</strong></li>
+    </ol>
   </div>
 
 </div>
 
 <script>
-// Automatically read the price from the web link address
 function setDynamicAmount() {
   const urlParams = new URLSearchParams(window.location.search);
   const amount = urlParams.get('amt');
@@ -157,7 +212,7 @@ function copyId() {
     document.getElementById('copyWrapper').style.borderColor = "var(--success)";
     document.getElementById('copyWrapper').style.background = "#f0fdf4";
     setTimeout(function() {
-      document.getElementById('badgeText').innerText = "👇 Tap to Copy UPI ID";
+      document.getElementById('badgeText').innerText = "👇 Step 1: Tap to Copy UPI ID";
       document.getElementById('badgeText').style.color = "#0284c7";
       document.getElementById('copyWrapper').style.borderColor = "#cbd5e1";
       document.getElementById('copyWrapper').style.background = "#f1f5f9";
