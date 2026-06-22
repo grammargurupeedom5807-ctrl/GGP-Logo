@@ -147,26 +147,28 @@
   </a>
 
   <div class="custom-instructions">
-    You can copy the UPI ID into your UPI Payment App. Tap anywhere on the UPI ID box above and copy it. Then tap on the <strong>Pay via UPI App</strong> button. You can paste the UPI ID in the search box as shown below, verify the banking name, and type the amount.
+    You can copy the UPI ID into your UPI Payment App (details are given below). 
+    <br><br>
+    <strong>Tap anywhere on the UPI ID box above</strong> and copy it. Then tap on the <strong>Pay via UPI App</strong> button. You can paste the UPI ID in the search box and it will show my banking name and type the amount.
   </div>
 
   <div class="app-guide-box gpay">
     <div class="guide-title" style="color: #3c4043;">🔵 In Google Pay (GPay)</div>
     <ol>
       <li>Open Google Pay.</li>
-      <li>On the home screen, tap <strong>Pay UPI ID or number</strong>.</li>
+      <li>On the home screen, tap <strong>Pay anyone</strong>.</li>
       <li>Long-press inside the search bar, tap <strong>Paste</strong>, and click <strong>Continue</strong>.</li>
       <li>Enter the package amount and pay!</li>
     </ol>
   </div>
 
   <div class="app-guide-box phonepe">
-    <div class="guide-title" style="color: #5f259f;">举 In PhonePe</div>
+    <div class="guide-title" style="color: #5f259f;">🟣 In PhonePe</div>
     <ol>
       <li>Open PhonePe.</li>
-      <li>In the "Transfer Money" section, tap <strong>To Bank/UPI ID</strong>.</li>
+      <li>In the "Transfer Money" section at the top, tap <strong>To Bank/UPI ID</strong>.</li>
       <li>Tap the <strong>UPI ID</strong> tab at the top of the screen.</li>
-      <li>Tap the search bar (or the <strong>+</strong> plus icon at bottom right).</li>
+      <li>Tap the search bar (or the <strong>+</strong> plus icon at the bottom right).</li>
       <li>Long-press, tap <strong>Paste</strong>, click <strong>Verify</strong>, and save to pay!</li>
     </ol>
   </div>
@@ -184,6 +186,7 @@
 </div>
 
 <script>
+// Automatically read the price from the web link address
 function setDynamicAmount() {
   const urlParams = new URLSearchParams(window.location.search);
   const amount = urlParams.get('amt');
