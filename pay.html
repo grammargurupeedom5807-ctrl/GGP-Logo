@@ -102,20 +102,24 @@
 <div class="pay-box">
   <h2>Grammar Guru Peedom</h2>
   
-  <div class="price-tag">
-    💰 Amount Payable (1 Month): Rs. 699
+  <!-- AMOUNT DUE (UPDATES AUTOMATICALLY) -->
+  <div class="price-tag" id="priceDisplay">
+    💰 Amount Payable: Rs. --
   </div>
 
+  <!-- STEP 1: LAUNCH THE APP -->
   <a class="app-launcher-btn" href="upi://pay" target="_top">
     🚀 Pay via UPI App
   </a>
 
+  <!-- CLEANED INSTRUCTIONS -->
   <div class="custom-instructions">
-    You can either scan the QR Code to make the payment or can Copy the UPI ID into your UPI Payment App (details are given below). 
+    You can copy the UPI ID into your UPI Payment App (details are given below). 
     <br><br>
     <strong>Tap anywhere on the UPI ID box below</strong> and copy it. Then tap on the <strong>Pay via UPI App</strong> button above. You can paste the UPI ID in the search box and it will show my banking name and type the amount.
   </div>
 
+  <!-- CLICK TO COPY FIELD -->
   <div id="copyWrapper" class="copy-card" onclick="copyId()">
     <span id="badgeText" class="badge">👇 Tap to Copy UPI ID</span>
     <div class="id-display">divyakrishnan2080@oksbi</div>
@@ -124,6 +128,20 @@
 </div>
 
 <script>
+// Automatically read the price from the web link address
+function setDynamicAmount() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const amount = urlParams.get('amt');
+  const priceDisplay = document.getElementById('priceDisplay');
+  
+  if (amount) {
+    priceDisplay.innerText = "💰 Amount Payable: Rs. " + amount;
+  } else {
+    priceDisplay.innerText = "💰 Complete Your Payment";
+  }
+}
+window.onload = setDynamicAmount;
+
 function copyId() {
   var id = "divyakrishnan2080@oksbi";
   var el = document.createElement('textarea');
