@@ -1,30 +1,123 @@
-<div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 400px; margin: auto; padding: 10px;">
-  
-  <!-- ROW 1: QUICK PAYMENT BUTTONS FOR MOBILE -->
-  <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: bold; color: #1e3a8a; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">🚀 Mobile Users: Pay Directly via App</p>
-  
-  <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
-    <!-- GPAY -->
-    <a href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end" target="_top" style="display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-weight: 600; color: #3c4043; text-decoration: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      🔵 Open in Google Pay (GPay)
-    </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grammar Guru Peedom - Payment</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --border: #cbd5e1;
+      --text: #0f172a;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+    }
+    .payment-container {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      padding: 24px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    h2 {
+      font-size: 18px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0 0 20px 0;
+    }
+    .app-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      transition: transform 0.1s;
+      border: 1px solid var(--border);
+    }
+    .app-btn:active {
+      transform: scale(0.98);
+    }
+    .gpay { color: #3c4043; background: #ffffff; }
+    .phonepe { color: #5f259f; background: #ffffff; }
+    .paytm { color: #00baf2; background: #ffffff; }
     
-    <!-- PHONEPE -->
-    <a href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=com.phonepe.app;end" target="_top" style="display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-weight: 600; color: #5f259f; text-decoration: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      🟣 Open in PhonePe
-    </a>
+    .divider {
+      margin: 24px 0;
+      border: 0;
+      border-top: 1px dashed #cbd5e1;
+    }
+    
+    .upi-card {
+      background: #f1f5f9;
+      border: 1px dashed #94a3b8;
+      padding: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .upi-card p {
+      margin: 0 0 6px 0;
+      font-size: 12px;
+      font-weight: bold;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+    .upi-id-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+    .status {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: #0284c7;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
 
-    <!-- PAYTM -->
-    <a href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=net.one97.paytm;end" target="_top" style="display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-weight: 600; color: #00baf2; text-decoration: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-      🟢 Open in Paytm
-    </a>
-  </div>
+<div class="payment-container">
+  
+  <h2>🚀 Mobile Users:<br>Pay Directly via App</h2>
+  
+  <a class="app-btn gpay" href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end" target="_top">
+    🔵 Open Google Pay (GPay)
+  </a>
+  
+  <a class="app-btn phonepe" href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=com.phonepe.app;end" target="_top">
+    🟣 Open PhonePe
+  </a>
 
-  <!-- ROW 2: FALLBACK COPY CARD -->
-  <div id="upiCard" onclick="copyUpiId()" style="background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 1px solid #e2e8f0; padding: 14px; border-radius: 10px; cursor: pointer; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-    <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: bold; color: #64748b; text-transform: uppercase;">Alternative: Tap to Copy UPI ID</p>
-    <div id="idText" style="font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 20px;">divyakrishnan2080@oksbi</div>
-    <span id="copyStatus" style="font-size: 11px; color: #0284c7; font-weight: 600;">Click to copy if buttons don't open</span>
+  <a class="app-btn paytm" href="intent://pay?pa=divyakrishnan2080@oksbi&pn=Divya%20Krishnan&cu=INR#Intent;scheme=upi;package=net.one97.paytm;end" target="_top">
+    🟢 Open Paytm
+  </a>
+
+  <hr class="divider">
+
+  <div id="upiCard" class="upi-card" onclick="copyUpiId()">
+    <p>Alternative: Tap to Copy UPI ID</p>
+    <div id="idText" class="upi-id-text">divyakrishnan2080@oksbi</div>
+    <span id="copyStatus" class="status">Tap anywhere inside to copy ID</span>
   </div>
 
 </div>
@@ -46,10 +139,12 @@ function copyUpiId() {
     status.innerText = "✓ ID Copied! Paste in your App";
     status.style.color = "#16a34a";
     card.style.borderColor = "#16a34a";
+    card.style.background = "#f0fdf4";
     setTimeout(function() {
-      status.innerText = "Click to copy if buttons don't open";
+      status.innerText = "Tap anywhere inside to copy ID";
       status.style.color = "#0284c7";
-      card.style.borderColor = "#e2e8f0";
+      card.style.borderColor = "#94a3b8";
+      card.style.background = "#f1f5f9";
     }, 3000);
   } catch (err) {
     alert("Copy manually: " + idStr);
@@ -57,3 +152,6 @@ function copyUpiId() {
   document.body.removeChild(textArea);
 }
 </script>
+
+</body>
+</html>
